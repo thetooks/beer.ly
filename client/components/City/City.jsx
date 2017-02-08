@@ -23,7 +23,7 @@ class City extends React.Component {
     }
 
     const context = this;
-    axios.get('api/breweries/' + this.state.city)
+    axios.get('/api/breweries/' + this.state.city)
       .then((response) => {
         const newBreweries = this.handleSuccess(response);
         context.setState({ breweries: newBreweries });
