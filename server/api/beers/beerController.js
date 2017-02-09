@@ -1,7 +1,15 @@
 'use strict';
 
+const fs = require('fs');
+const path = require('path');
 const utils = require('../utils/helpers');
-const config = require('../../config/apiKeys.js') || null;
+
+var config = null;
+fs.access(path.join(__dirname, '../../config/apiKeys.js'), function(err) {
+  if (!err) {
+    config = require('../../config/apiKeys.js');
+  }
+});
 
 function fetchBreweryByName(name) {
   const api = {
