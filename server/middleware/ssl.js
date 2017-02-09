@@ -7,7 +7,7 @@ const path = require('path');
 // cert: fs.readFileSync(path.join(__dirname, '../..', 'cert.pem')),
 
 module.exports = {
-  key: process.env.KEY_PEM,
-  cert: process.env.CERT_PEM,
+  key: process.env.KEY_PEM || fs.readFileSync(path.join(__dirname, '../..', 'key.pem')),
+  cert: process.env.CERT_PEM || fs.readFileSync(path.join(__dirname, '../..', 'cert.pem')),
   passphrase: 'beerly'
 };

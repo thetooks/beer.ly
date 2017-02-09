@@ -11,10 +11,12 @@ const config = require('./config/config');
 const api = require('./api/api');
 const auth = require('./auth/auth');
 
-// Connect to database
-var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
-                replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } }; 
-mongoose.connect('mongodb://thetooks:hrsf52@ds147069.mlab.com:47069/beerly', options);
+mongoose.connect(config.database.local);
+
+// Connect to database THROUGH HIROKU
+// var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
+//                 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } }; 
+// mongoose.connect('mongodb://thetooks:hrsf52@ds147069.mlab.com:47069/beerly', options);
 
 // Middleware
 require('./middleware/middleware')(app);
@@ -30,5 +32,5 @@ require('./middleware/webpack')(app, express);
 // https.createServer(ssl, app).listen(config.port);
 
 app.listen(config.port);
-
-console.info('==> 🍺  flowing on %ss. Open up https://localhost:%s/ in your browser.', config.port, config.port);
+console.log('listening to port ' + config.port);
+// console.info('==> 🍺  flowing on %ss. Open up https://localhost:%s/ in your browser.', config.port, config.port);

@@ -1,11 +1,11 @@
 'use strict';
 
 const utils = require('../utils/helpers');
-// const config = require('../../config/apiKeys.js');
+const config = require('../../config/apiKeys.js');
 
 function fetchBreweriesByLocation(city) {
   const api = {
-    key: process.env.BREWERYDBKEY,
+    key: process.env.BREWERYDBKEY || config.breweryDBKey,
     url: 'http://api.brewerydb.com/v2/',
     endPoint: 'locations/'
   };

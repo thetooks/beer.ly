@@ -3,7 +3,7 @@ import styles from './Checkout.css';
 import NavBar from '../NavBar/NavBar';
 import axios from 'axios';
 
-// import { stripePublishableKey, stripeTestKey } from '../../../server/config/apiKeys';
+import { stripePublishableKey, stripeTestKey } from '../../../server/config/apiKeys';
 import { ReactScriptLoaderMixin } from 'react-script-loader';
 
 const Checkout = React.createClass({
@@ -27,7 +27,8 @@ const Checkout = React.createClass({
   onScriptLoaded: function() {
     if (!Checkout.getStripeToken) {
       // Put your publishable key here
-      Stripe.setPublishableKey(process.env.STRIPEAPIKEY);
+      var stripeKey = process.env.STRIPEAPIKEY || stripePublishableKey;
+      Stripe.setPublishableKey(stripeKey);
 
       this.setState({ stripeLoading: false, stripeLoadingError: false });
     }

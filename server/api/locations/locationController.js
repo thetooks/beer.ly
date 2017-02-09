@@ -1,12 +1,12 @@
 'use strict';
 
 const utils = require('../utils/helpers');
-// const config = require('../../config/apiKeys.js');
+const config = require('../../config/apiKeys.js');
 
 exports.get = (req, res) => {
   // Google Maps endpoint
   const api = {
-    key: process.env.GOOGLEPLACEAPIKEY,
+    key: process.env.GOOGLEPLACEAPIKEY || config.googleMapsAPIKey,
     url: 'https://maps.googleapis.com/maps/api/',
     endPoint: 'place/autocomplete/json'
   };
