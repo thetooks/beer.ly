@@ -19,8 +19,6 @@ mongoose.connect('mongodb://thetooks:hrsf52@ds147069.mlab.com:47069/beerly', opt
 // Middleware
 require('./middleware/middleware')(app);
 
-app.use('/static', express.static(path.join(__dirname, '/../client')));
-
 // API Routing
 app.use('/api', api);
 
