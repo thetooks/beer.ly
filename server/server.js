@@ -10,7 +10,7 @@ const api = require('./api/api');
 const auth = require('./auth/auth');
 
 // Connect to database
-mongoose.connect(config.database.local);
+mongoose.connect(config.database.mLab);
 
 // Middleware
 require('./middleware/middleware')(app);
