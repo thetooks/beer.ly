@@ -3,8 +3,10 @@ import styles from './Checkout.css';
 import NavBar from '../NavBar/NavBar';
 import axios from 'axios';
 
-import { stripePublishableKey, stripeTestKey } from '../../../server/config/apiKeys';
+// import { stripePublishableKey, stripeTestKey } from '../../../server/config/apiKeys';
 import { ReactScriptLoaderMixin } from 'react-script-loader';
+
+var config = require('../../../server/config/apiKeys') || null;
 
 const Checkout = React.createClass({
   mixins: [ ReactScriptLoaderMixin ],
@@ -27,7 +29,7 @@ const Checkout = React.createClass({
   onScriptLoaded: function() {
     if (!Checkout.getStripeToken) {
       // Put your publishable key here
-      var stripeKey = process.env.STRIPEAPIKEY || stripePublishableKey;
+      var stripeKey = process.env.STRIPEAPIKEY || config.stripePublishableKey;
       Stripe.setPublishableKey(stripeKey);
 
       this.setState({ stripeLoading: false, stripeLoadingError: false });

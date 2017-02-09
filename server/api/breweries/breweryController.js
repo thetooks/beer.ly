@@ -1,7 +1,7 @@
 'use strict';
 
 const utils = require('../utils/helpers');
-const config = require('../../config/apiKeys.js');
+const config = require('../../config/apiKeys.js') || null;
 
 function fetchBreweriesByLocation(city) {
   const api = {
