@@ -27,6 +27,6 @@ app.use('/auth', auth);
 
 require('./middleware/webpack')(app, express);
 
-https.createServer(ssl, app).listen(config.port);
+https.createServer(ssl, app).listen(80);
 
 console.info('==> 🍺  flowing on %ss. Open up https://localhost:%s/ in your browser.', config.port, config.port);
