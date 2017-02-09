@@ -10,7 +10,9 @@ const api = require('./api/api');
 const auth = require('./auth/auth');
 
 // Connect to database
-mongoose.connect('mongodb://thetooks:hrsf52@ds147069.mlab.com:47069/beerly');
+var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
+                replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } }; 
+mongoose.connect('mongodb://thetooks:hrsf52@ds147069.mlab.com:47069/beerly', options);
 
 // Middleware
 require('./middleware/middleware')(app);
