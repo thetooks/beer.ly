@@ -1,7 +1,7 @@
 'use strict';
 
-let config = require('../../config/apiKeys');
-const stripe = require('stripe')(config.stripeTestKey);
+// let config = require('../../config/apiKeys');
+const stripe = require('stripe')(process.env.STRIPEAPIKEY);
 
 
 exports.get = (req, res, next) => {

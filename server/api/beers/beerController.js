@@ -1,11 +1,19 @@
 'use strict';
 
+const fs = require('fs');
+const path = require('path');
 const utils = require('../utils/helpers');
-const config = require('../../config/apiKeys.js');
+
+var config = null;
+fs.access(path.join(__dirname, '../../config/apiKeys.js'), function(err) {
+  if (!err) {
+    config = require('../../config/apiKeys.js');
+  }
+});
 
 function fetchBreweryByName(name) {
   const api = {
-    key: config.breweryDBKey,
+    key: process.env.BREWERYDBKEY || config.breweryDBKey,
     url: 'http://api.brewerydb.com/v2/',
     endPoint: 'breweries/'
   };
@@ -20,7 +28,7 @@ function fetchBreweryByName(name) {
 
 function fetchBeersByBreweryId(breweryID) {
   const api = {
-    key: config.breweryDBKey,
+    key: process.env.BREWERYDBKEY || config.breweryDBKey,
     url: 'http://api.brewerydb.com/v2/',
     endPoint: `brewery/${breweryID}/beers/`
   };
