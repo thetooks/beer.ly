@@ -5,22 +5,83 @@ mapboxgl.accessToken = 'pk.eyJ1IjoicndodWJlciIsImEiOiJjaXl4djZndWEwMDcxMnFtczk4Y
 
 
 class BreweryMap extends React.Component {
-  componentDidMount() {
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v9'
+      center: [nextProps.breweries[0].longitude, nextProps.breweries[0].latitude],
+      zoom: 11,
+      style: 'mapbox://styles/mapbox/streets-v9',
+      // scrollZoom: false
     });
+
+    const data = this.createGeoJSON(nextProps.breweries);
+
+    map.on('load', () => {
+      map.addLayer({
+        'id': 'points',
+        'type': 'symbol',
+        'source': {
+          'type': 'geojson',
+          'data': {
+            'type': 'FeatureCollection',
+            'features': data
+          }
+        },
+        'layout': {
+          'icon-image': '{icon}-15',
+          'text-field': '{title}',
+          'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+          'text-size': 9,
+          'text-offset': [0, -0.6],
+          'text-anchor': 'bottom',
+          'text-optional': true
+        }
+      });
+    });
+
+    map.addControl(new mapboxgl.NavigationControl());
+
     return (
       {map}
     );
+  }
+
+  createGeoJSON(breweryList) {
+    const createEntry = (brewery) => {
+      var entry = { //eslint-disable-line
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [brewery.longitude, brewery.latitude]
+        },
+        properties: {
+          title: brewery.brewery.name,
+          icon: 'beer'
+        }
+      };
+      return entry;
+    };
+
+    const geoData = [];
+    for (let i = 0; i < breweryList.length; i++) {
+      geoData.push(createEntry(breweryList[i]));
+    }
+
+    return geoData;
   }
 
   render() {
     return (
       <div className={styles.wrapper}>
         <div className={styles.heading}>
-          <h1>Test</h1>
-          <div id="map"></div>
+          <div id="map">
+          </div>
         </div>
       </div>
     );
