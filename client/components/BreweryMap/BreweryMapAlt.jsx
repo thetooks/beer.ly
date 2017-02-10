@@ -27,12 +27,9 @@ const BreweryMap = React.createClass({
   onScriptLoaded() {
     this.setState({scriptLoading: false, scriptLoadError: false});
     mapboxgl.accessToken = 'pk.eyJ1IjoicndodWJlciIsImEiOiJjaXl4djZndWEwMDcxMnFtczk4Y25xeDcxIn0.jUB7Uxo3IZ51Nri9WIRFJw';
-    const monument = [-77.0353, 38.8895];
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/light-v9',
-      center: monument,
-      zoom: 15
+      style: 'mapbox://styles/mapbox/streets-v9'
     });
 
     // create the popup
