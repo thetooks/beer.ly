@@ -11,7 +11,7 @@ module.exports = (
   <Route path="/" component={App}>
     <IndexRoute component={Home} />
     <Route path="/checkout" component={Checkout} />
-    <Route path="/:city" component={City} />
-    <Route path="/:city/:brewery" component={Brewery} />
+    <Route path="/city/:city" component={City} />
+    <Route path="/city/:city/brewery/:brewery" component={Brewery} />
   </Route>
 );

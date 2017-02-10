@@ -29,7 +29,7 @@ class BreweryList extends React.Component {
         <Link className={styles.moreInfo} to="/modal">
           <i className="material-icons">info_outline</i>
         </Link>
-        <Link to={`/${this.props.city}/${this.props.brewery.brewery.name}`}>
+        <Link to={`/city/${this.props.city}/brewery/${this.props.brewery.brewery.name}`}>
             <img className={styles.cover} src={this.squareImage} />
         </Link>
         <div className={styles.info}>

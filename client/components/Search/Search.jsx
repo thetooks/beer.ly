@@ -52,7 +52,7 @@ class Search extends React.Component {
   }
 
   handleRequest = (cityName) => {
-    browserHistory.push('/' + cityName);
+    browserHistory.push('/city/' + cityName);
   }
 
   fetchCities = () => {
@@ -62,7 +62,7 @@ class Search extends React.Component {
     }
 
     const context = this;
-    axios.get('api/locations/' + this.state.input, {cancelToken: this.source.token})
+    axios.get('/api/locations/' + this.state.input, {cancelToken: this.source.token})
       .then((response) => {
         const cities = this.handleSuccess(response);
         context.setState({ dataSource: cities });
