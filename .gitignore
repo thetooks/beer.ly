@@ -46,5 +46,7 @@ key.pem
 # API Keys
 server/config/apiKeys.js
 
-# Mongodb Files
+# Database - Mongo
 data/db/
+mongodb
+mongodb-osx-x86_64-3.4.2

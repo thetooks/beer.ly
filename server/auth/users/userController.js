@@ -2,7 +2,7 @@
 
 const User = require('./userModel');
 const jwt = require('jsonwebtoken');
-let config = require('../../config/apiKeys');
+// let config = require('../../config/apiKeys');
 
 
 exports.get = (req, res, next) => {
@@ -76,7 +76,7 @@ var logIn = function(req, res) {
       user.comparePassword(req.body.password, function(err, isMatch) {
         if (isMatch && !err) {
           // Create token if the password matched and no error was thrown
-          var token = jwt.sign(user, config.beerlyAuthSecret, {
+          var token = jwt.sign(user, '', {
             expiresIn: '2 days'
           });
           res.json({
