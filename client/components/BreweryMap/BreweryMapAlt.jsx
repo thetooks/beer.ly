@@ -1,3 +1,9 @@
+/*
+This file is not used in the code.
+It is intended to serve as an example for using lazy script loading for
+Mapbox instead of the Mapbox GL module.
+*/
+
 import React from 'react';
 import styles from './BreweryMap.css';
 import { ReactScriptLoaderMixin } from 'react-script-loader';
