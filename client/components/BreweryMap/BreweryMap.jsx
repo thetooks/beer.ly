@@ -18,8 +18,8 @@ const BreweryMap = React.createClass({
   createMap(breweries) {
     mapboxgl.accessToken = 'pk.eyJ1IjoicndodWJlciIsImEiOiJjaXl4djZndWEwMDcxMnFtczk4Y25xeDcxIn0.jUB7Uxo3IZ51Nri9WIRFJw'; //eslint-disable-line
 
-    const lng = breweries[0].longitude || -122.400158;
-    const lat = breweries[0].latitude || 37.788376;
+    const lng = breweries ? breweries[0].longitude : -122.400158;
+    const lat = breweries ? breweries[0].latitude : 37.788376;
 
     const map = new mapboxgl.Map({ //eslint-disable-line
       container: 'map',
@@ -29,9 +29,11 @@ const BreweryMap = React.createClass({
       // scrollZoom: false
     });
 
-    map.on('load', () => {
-      map.addLayer(createGeoJSON(breweries));
-    });
+    if (breweries) {
+      map.on('load', () => {
+        map.addLayer(createGeoJSON(breweries));
+      });
+    }
 
     return (
       map
