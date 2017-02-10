@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import styles from './City.css';
 import axios from 'axios';
 import BreweryList from '../BreweryList/BreweryList';
-import BreweryMap from '../BreweryMap/BreweryMapAlt.jsx';
+import BreweryMap from '../BreweryMap/BreweryMap.jsx';
 
 
 class City extends React.Component {
