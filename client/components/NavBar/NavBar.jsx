@@ -36,7 +36,7 @@ class Nav extends React.Component {
     const navbar = isHomePage ? styles.transparentNavbar : styles.navbar;
     const profile = this.props.auth.loggedIn() ? this.props.profile : {};
     const loginLogout  = this.props.auth.loggedIn() ? 'Logout' : 'Login';
-    const cart = isHomePage ? null : <Cart cart={this.props.cart} location={this.props.location.pathname} checkout={this.props.checkout} inCheckout={this.props.inCheckout}/>;
+    const cart = isHomePage ? null : <Cart className={styles.cart} cart={this.props.cart} location={this.props.location.pathname} checkout={this.props.checkout} inCheckout={this.props.inCheckout}/>;
     return (
         <nav className={navbar}>
           <h1>

@@ -9,7 +9,7 @@ export default class AuthService extends EventEmitter {
     // Configure Auth0
     this.lock = new Auth0Lock(clientId, domain, {
       auth: {
-        redirectUrl: 'https://localhost:8008/',
+        redirectUrl: 'http://localhost:8008/',
         responseType: 'token'
       },
       theme: {
