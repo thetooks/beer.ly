@@ -21,7 +21,7 @@ class Cart extends React.Component {
     // this.handleToggle = this.handleToggle.bind(this);
     this.handleOpenCart = this.handleOpenCart.bind(this);
     this.handleCloseCart = this.handleCloseCart.bind(this);
-    this.checkout = this.checkout.bind(this);
+    // this.checkout = this.checkout.bind(this);
   }
 
   // handleToggle = () => this.setState({open: !this.state.open});
