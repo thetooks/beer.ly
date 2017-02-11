@@ -76,8 +76,11 @@ class App extends React.Component {
             showProfile={this.toggleUserProfile.bind(this)}
             profile={this.state.profile}
             auth={this.state.auth}
+            checkout={this.checkout}
+            inCheckout={this.state.inCheckout}
           />
           <UserProfile profile={this.state.profile} open={this.state.showUserProfile}/>
+        
           {childrenWithMoreProps}
         </div>
       </MuiThemeProvider>

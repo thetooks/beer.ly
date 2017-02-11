@@ -29,8 +29,7 @@ const BeerCart = (props) => {
         {checkout}
       </div>
       <div className={styles.cartRow}>
-      {cartItems}
-
+        {cartItems}
       </div>
     </div>
   );

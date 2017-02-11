@@ -1,7 +1,9 @@
 import React, { PropTypes } from 'react';
+import styles from './City.css';
 import axios from 'axios';
 import BreweryList from '../BreweryList/BreweryList';
-import styles from './City.css';
+import BreweryMap from '../BreweryMap/BreweryMap.jsx';
+
 
 class City extends React.Component {
   constructor(props) {
@@ -38,7 +40,7 @@ class City extends React.Component {
   }
 
   handleError(error) {
-    console.log(error);
+    console.log(error); //eslint-disable-line
   }
 
   render() {
@@ -49,6 +51,7 @@ class City extends React.Component {
           <p className={styles.details}>About {this.state.breweries.length} results ({(1 / this.state.breweries.length).toFixed(5)} seconds) </p>
         </div>
         <BreweryList breweries={this.state.breweries} city={this.state.city}/>
+        <BreweryMap breweries={this.state.breweries} city={this.state.city}/>
       </div>
     );
   }
