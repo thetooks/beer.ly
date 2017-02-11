@@ -4,7 +4,8 @@ import Badge from 'material-ui/Badge';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import ShoppingCartIcon from 'material-ui/svg-icons/action/shopping-cart';
-// import styles from './Cart.css';
+import RaisedButton from 'material-ui/RaisedButton';
+import styles from './Cart.css';
 
 
 const iconStyles = {
@@ -17,22 +18,30 @@ class Cart extends React.Component {
 
     this.state = {open: false};
 
-    this.handleToggle = this.handleToggle.bind(this);
+    // this.handleToggle = this.handleToggle.bind(this);
+    this.handleOpenCart = this.handleOpenCart.bind(this);
+    this.handleCloseCart = this.handleCloseCart.bind(this);
+    this.checkout = this.checkout.bind(this);
   }
 
-  handleToggle = () => this.setState({open: !this.state.open});
-
-  handleClose = () => this.setState({open: false});
+  // handleToggle = () => this.setState({open: !this.state.open});
+  handleOpenCart = () => this.setState({open: true});
+  handleCloseCart = () => this.setState({open: false});
 
   render() {
     const beersInCart = this.props.cart.map((beer, index) => {
-      return <MenuItem primaryText={beer.name} key={index} />;
+      return (
+        <div className={styles.beerCartItem} key={index}>
+          <img src={beer.image} className={styles.beerCartImage} /> 
+          <MenuItem primaryText={beer.name} />
+        </div>
+      );
     });
 
     return (
-      <div onClick={this.handleToggle}>
+      <div>
         <Badge badgeContent={this.props.cart.length} secondary={true} badgeStyle={{top: 12, right: 12}}>
-          <IconButton tooltip="Cart">
+          <IconButton tooltip="Cart" onClick={this.handleOpenCart}>
             <ShoppingCartIcon style={iconStyles} />
           </IconButton>
         </Badge>
@@ -43,7 +52,10 @@ class Cart extends React.Component {
           open={this.state.open}
           onRequestChange={(open) => this.setState({open})}
         >
+          <div>Your Shopping Cart</div>
           {beersInCart}
+          <RaisedButton className={styles.button} primary onClick={() => {this.handleCloseCart(); this.props.checkout();}} label="Checkout" />
+          <RaisedButton className={styles.button} primary onClick={this.handleCloseCart} label="Back" />
         </Drawer>
       </div>
     );
