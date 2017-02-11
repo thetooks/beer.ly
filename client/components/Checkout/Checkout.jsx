@@ -6,15 +6,6 @@ import axios from 'axios';
 // import { stripePublishableKey, stripeTestKey } from '../../../server/config/apiKeys';
 import { ReactScriptLoaderMixin } from 'react-script-loader';
 
-// import path from 'path';
-// import fileExists from 'file-exists';
-
-// if (fileExists.sync(path.join(__dirname, '../../../server/config/apiKeys.js'))) {
-//   var config = require(__dirname + '/../../../server/config/apiKeys.js');
-// } else {
-//   var config = null;
-// }
-
 const Checkout = React.createClass({
   mixins: [ ReactScriptLoaderMixin ],
 

@@ -1,0 +1,24 @@
+.beerCartItem {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.beerCartImage {
+  float: left;
+  width: 50px;
+  height: 50px;
+  vertical-align: top;
+}
+
+.beerCartName {
+}
+
+.button {
+  position: relative;
+  float: left;
+  top: 13px;
+  margin-left: 20px;
+  height: 35px;
+  width: 100px;
+  background-color: green;
+}
