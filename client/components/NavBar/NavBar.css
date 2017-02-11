@@ -34,6 +34,38 @@
   composes: logo;
   color: white;
 }
+.Login {
+  color: #444;
+  position: absolute;
+  right: 70px;
+}
+.lightLogin {
+  color: white;
+  position: absolute;
+  right: 70px;
+}
+
+.profilePic {
+  position: absolute;
+  left: 230px;
+
+}
+
+
+.lightprofileName {
+  position: absolute;
+  left: 250px;
+  top:25px;
+  color: white;
+  font-size: 20px;
+}
+.profileName {
+  position: absolute;
+  left: 400px;
+  top:25px;
+  color: #444;
+
+}
 
 .link {
 
