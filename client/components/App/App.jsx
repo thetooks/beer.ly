@@ -61,7 +61,7 @@ class App extends React.Component {
     return (
       <MuiThemeProvider>
         <div className={styles.app}>
-          <NavBar cart={this.state.cart} location={this.props.location} />
+          <NavBar cart={this.state.cart} location={this.props.location} checkout={this.checkout} inCheckout={this.state.inCheckout}/>
           {childrenWithMoreProps}
         </div>
       </MuiThemeProvider>

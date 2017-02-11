@@ -32,5 +32,5 @@ require('./middleware/webpack')(app, express);
 // https.createServer(ssl, app).listen(config.port);
 
 app.listen(config.port);
-console.log('listening to port ' + config.port);
+console.log('listening to port ' + config.port + ' @ http://localhost:' + config.port);
 // console.info('==> 🍺  flowing on %ss. Open up https://localhost:%s/ in your browser.', config.port, config.port);

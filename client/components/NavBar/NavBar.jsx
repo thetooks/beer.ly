@@ -11,9 +11,9 @@ class Nav extends React.Component {
   render() {
     const isHomePage = this.props.location.pathname === '/';
     const logo = isHomePage ? styles.lightLogo : styles.logo;
-    const cart = isHomePage ? null : <Cart cart={this.props.cart} location={this.props.location.pathname}/>;
+    const cart = isHomePage ? null : <Cart cart={this.props.cart} location={this.props.location.pathname} checkout={this.props.checkout} inCheckout={this.props.inCheckout}/>;
     const navbar = isHomePage ? styles.transparentNavbar : styles.navbar;
-
+    console.log('NAVBAR JSX PROPS: ', this.props);
     return (
         <nav className={navbar}>
           <h1>
