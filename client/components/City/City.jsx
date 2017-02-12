@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
 import styles from './City.css';
 import axios from 'axios';
 import BreweryList from '../BreweryList/BreweryList';
@@ -10,8 +11,10 @@ class City extends React.Component {
     super(props);
     this.state = {
       city: this.props.params.city,
+      tileView: true,
       breweries: []
     };
+    this.changeView = this.changeView.bind(this);
   }
 
   componentDidMount() {
@@ -43,15 +46,20 @@ class City extends React.Component {
     console.log(error); //eslint-disable-line
   }
 
+  changeView() {
+    this.setState({ tileView: !this.state.tileView });
+  }
+
   render() {
     return (
       <div className={styles.wrapper}>
         <div className={styles.heading}>
+        <RaisedButton className={styles.view} onClick={this.changeView} label={this.state.tileView ? 'Map View' : 'Tile View'} />
           <h1>Breweries in {this.state.city}</h1>
-          <p className={styles.details}>About {this.state.breweries.length} results ({(1 / this.state.breweries.length).toFixed(5)} seconds) </p>
+          <p className={styles.details}>About {this.state.breweries.length} results ({(1 / this.state.breweries.length).toFixed(3)} seconds) </p>
         </div>
-        <BreweryList breweries={this.state.breweries} city={this.state.city}/>
-        <BreweryMap breweries={this.state.breweries} city={this.state.city}/>
+        {this.state.tileView && <BreweryList breweries={this.state.breweries} city={this.state.city} />}
+        {!this.state.tileView && <BreweryMap breweries={this.state.breweries} />}
       </div>
     );
   }

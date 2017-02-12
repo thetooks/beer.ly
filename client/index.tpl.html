@@ -9,7 +9,21 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.css' rel='stylesheet'>
-    <style>.mapboxgl-map{overflow: visible;}</style>
+    <style>
+      .mapboxgl-popup {
+        max-width: 250px;
+        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+      }
+      .mapboxgl-popup-content {
+        font: 400 15px/22px 'Source Sans Pro', 'Helvetica Neue', Sans-serif;
+        padding: 0;
+        width: 400px;
+      }
+      .mapboxgl-canvas-container {
+        width: 1024px;
+        height: 400px;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
