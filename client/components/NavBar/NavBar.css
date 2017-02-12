@@ -34,10 +34,12 @@
   composes: logo;
   color: white;
 }
+
 .Login {
   color: #444;
   position: absolute;
-  right: 70px;
+  right: 150px;
+  top: 32px;
 }
 .lightLogin {
   color: white;
