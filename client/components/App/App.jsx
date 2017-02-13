@@ -2,7 +2,8 @@ import React from 'react';
 import styles from './App.css';
 import NavBar from '../NavBar/NavBar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import UserProfile from '../UserProfile/userProfile';
+import UsrProfile from '../UserProfile/formComponent';
+
 const cartSize = 4;
 
 class App extends React.Component {
@@ -13,7 +14,8 @@ class App extends React.Component {
       inCheckout: false,
       auth: this.props.route.auth,
       profile: this.props.route.auth.getProfile(),
-      showUserProfile: false
+      showUserProfile: false,
+      showAvatar: true
     };
 
     // listen to profile_updated events to update internal state
@@ -37,7 +39,7 @@ class App extends React.Component {
     });
   }
   toggleUserProfile() {
-    this.setState({ showUserProfile: !this.state.showUserProfile });
+    this.setState({ showUserProfile: !this.state.showUserProfile,  showAvatar: !this.state.showAvatar});
   }
   removeFromCart(indexToRemove) {
     const newCart = this.state.cart.slice(0);
@@ -57,6 +59,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.props.route.auth.loggedIn());
     const childrenWithMoreProps = React.Children.map(this.props.children, (child) => {
       return React.cloneElement(child, {
         auth: this.props.route.auth, // eslint-disable-line
@@ -73,14 +76,14 @@ class App extends React.Component {
           <NavBar
             cart={this.state.cart}
             location={this.props.location}
+            showAvatar={this.state.showAvatar}
             showProfile={this.toggleUserProfile.bind(this)}
             profile={this.state.profile}
             auth={this.state.auth}
             checkout={this.checkout}
             inCheckout={this.state.inCheckout}
           />
-          <UserProfile profile={this.state.profile} open={this.state.showUserProfile}/>
-        
+          { this.state.showUserProfile && <UsrProfile profile={this.state.profile} showProfile={this.toggleUserProfile.bind(this)} /> }
           {childrenWithMoreProps}
         </div>
       </MuiThemeProvider>
@@ -90,7 +93,8 @@ class App extends React.Component {
 
 App.propTypes = {
   children: React.PropTypes.object.isRequired,
-  location: React.PropTypes.object.isRequired
+  location: React.PropTypes.object.isRequired,
+  route: React.PropTypes.object
 };
 
 export default App;

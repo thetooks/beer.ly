@@ -9,7 +9,7 @@ export default class AuthService extends EventEmitter {
     // Configure Auth0
     this.lock = new Auth0Lock(clientId, domain, {
       auth: {
-        redirectUrl: 'https://hrsf52-beerly.herokuapp.com/',
+        redirectUrl: 'https://hrsf52-beerly.herokuapp.com',
         responseType: 'token'
       },
       theme: {
