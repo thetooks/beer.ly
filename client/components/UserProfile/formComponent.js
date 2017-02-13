@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './UserProfile.css';
+import styles from './userProfile.css';
 import Formsy from 'formsy-react';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
